@@ -24,3 +24,21 @@ function addActivity() {
 
     // Update total duration
     updateTotalDuration();
+
+    // Clear input fields
+    document.getElementById('activityDescription').value = '';
+    document.getElementById('activityDuration').value = '';
+}
+
+function updateTotalDuration() {
+    var table = document.getElementById('activityTable').getElementsByTagName('tbody')[0];
+    var rows = table.getElementsByTagName('tr');
+    var totalDuration = 0;
+
+    for (var i = 0; i < rows.length; i++) {
+        var duration = parseInt(rows[i].getElementsByTagName('td')[1].textContent);
+        totalDuration += duration;
+    }
+
+    document.getElementById('totalDuration').textContent = 'Total Duration: ' + totalDuration + ' minutes';
+}
